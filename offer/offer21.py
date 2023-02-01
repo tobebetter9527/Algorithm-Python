@@ -4,6 +4,7 @@ from typing import List
 
 
 class Solution:
+
     def exchange(self, nums: List[int]) -> List[int]:
         left, right = 0, len(nums) - 1
         while left < right:
