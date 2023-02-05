@@ -1,5 +1,12 @@
 # author: tobebetter9527
 # since: 2023/1/12 23:26
-import requests
-r = requests.get("https://www.runoob.com/")
-print(r.text)
+def remainder(x, a, p):
+    rem = 1
+    for i in range(a):
+        print(i)
+        rem = (rem * x) % p
+    return rem
+
+
+rem = remainder(3, 39, 1000000007)
+print(rem)
