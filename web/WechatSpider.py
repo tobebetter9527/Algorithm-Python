@@ -1,7 +1,9 @@
 # author: tobebetter9527
 # since: 2023/02/05 15:40
+import os
 import re
 import time
+from os import path
 from random import random
 from typing import List
 
@@ -25,7 +27,13 @@ class WechatVoiceSpider:
         pattern = re.compile('voice_encode_fileid="(.*?)"')
         return pattern.findall(html)
 
-    def download_voice(self, voice_ids: List[str], pre_file_name: str):
+    def create_directory(self):
+        p = 'E:\\English\\en_cracker\\' + self.date_time[0:6]
+        if not path.exists(p):
+            os.mkdir(p)
+        return p
+
+    def download_voice(self, voice_ids: List[str], pre_file_name: str, directory: str):
         num = 1
         pre_file_name = self.date_time + pre_file_name
         for voice_id in voice_ids:
@@ -33,8 +41,8 @@ class WechatVoiceSpider:
             r = requests.get(url, self.headers)
 
             file_name = pre_file_name + '-' + str(num) + '.mp3'
+            file_path = directory + '\\' + file_name
             num += 1
-            file_path = 'E:\\English\\en_cracker\\{}'.format(file_name)
 
             with open(file_path, mode='wb') as f:
                 f.write(r.content)
@@ -43,17 +51,19 @@ class WechatVoiceSpider:
             time.sleep(sleep_time)
 
     def run(self):
+        directory = self.create_directory()
         for pre_name, url in self.urls_dict.items():
             html = self.get_html(url)
             voice_ids = self.get_voice_encode_fileid(html)
-            self.download_voice(voice_ids, pre_name)
+            self.download_voice(voice_ids, pre_name, directory)
 
 
 if __name__ == '__main__':
-    urls_dict = {'英文早餐': 'https://mp.weixin.qq.com/s/aexCIz49MXFyKMrWI03z4A',
-                 '美剧绝命律师': 'https://mp.weixin.qq.com/s/y58G9XsK7iWO7bflSTgwRA',
-                 '英语新闻': 'https://mp.weixin.qq.com/s/XZUqyAh6sBQ77Pzu1-xgbA',
-                 '从零开始学英语': 'https://mp.weixin.qq.com/s/TxPv1DHmKOaJvc-EEZx9Cw'}
-    date_time = '20230203'
+    urls_dict = {}
+    urls_dict['英文早餐'] = 'https://mp.weixin.qq.com/s/Y8dVQc85W7VqvACFiUJtUw'
+    urls_dict['美剧继承之战'] = 'https://mp.weixin.qq.com/s/uOXxllUcUULQFy0wftduaQ'
+    urls_dict['英语新闻'] = 'https://mp.weixin.qq.com/s/YDz18Qf4EVffTnSk_D9AVA'
+    urls_dict['从零开始学英语'] = 'https://mp.weixin.qq.com/s/PoyN-w1XGKc6hh9jCqJOPw'
+    date_time = '20221223'
     spider = WechatVoiceSpider(urls_dict, date_time)
     spider.run()
