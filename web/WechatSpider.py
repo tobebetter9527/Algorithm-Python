@@ -58,12 +58,12 @@ class WechatVoiceSpider:
 
     def run(self):
         directory = self.create_directory()
-        heads = []
+        heads = ['## ' + self.date_time + '\n']
         for pre_name, url in self.urls_dict.items():
             html = self.get_html(url)
             self.handleTitles(heads, html, url)
             voice_ids = self.get_voice_encode_fileid(html)
-            self.download_voice(voice_ids, pre_name, directory)
+            # self.download_voice(voice_ids, pre_name, directory)
 
         with open(directory + '\\' + '123456.txt', mode='w') as f:
             f.writelines(heads)
@@ -71,10 +71,10 @@ class WechatVoiceSpider:
 
 if __name__ == '__main__':
     urls_dict = {}
-    urls_dict['英文早餐'] = 'https://mp.weixin.qq.com/s/TmMo9ysFmbpS1MRnlbC78g'
-    urls_dict['美剧绝命律师'] = 'https://mp.weixin.qq.com/s/kWcGlnjHs4hCeMIbHYoGaA'
-    urls_dict['英语新闻'] = 'https://mp.weixin.qq.com/s/AjdS02hD2GMbSYlyzfDCpQ'
-    urls_dict['从零开始学英语'] = 'https://mp.weixin.qq.com/s/mliJnJ4I2hRBdBeadHcXnA'
-    date_time = '20230206'
+    urls_dict['英文早餐'] = 'https://mp.weixin.qq.com/s/efu9nkS_0IY7uqqBjCRacQ'
+    urls_dict['美剧绝命律师'] = 'https://mp.weixin.qq.com/s/jDI-7ov3jup3rE2XXioyCg'
+    urls_dict['英语新闻'] = 'https://mp.weixin.qq.com/s/k5og4wMfGd9kVNNsWQ1k5Q'
+    urls_dict['从零开始学英语'] = 'https://mp.weixin.qq.com/s/2srp_NHmKPppcJPX3t-YJw'
+    date_time = '20230207'
     spider = WechatVoiceSpider(urls_dict, date_time)
     spider.run()
