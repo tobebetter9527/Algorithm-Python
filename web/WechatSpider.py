@@ -63,7 +63,7 @@ class WechatVoiceSpider:
             html = self.get_html(url)
             self.handleTitles(heads, html, url)
             voice_ids = self.get_voice_encode_fileid(html)
-            # self.download_voice(voice_ids, pre_name, directory)
+            self.download_voice(voice_ids, pre_name, directory)
 
         with open(directory + '\\' + '123456.txt', mode='w') as f:
             f.writelines(heads)
