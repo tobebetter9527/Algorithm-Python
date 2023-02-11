@@ -73,10 +73,10 @@ class WechatVoiceSpider:
 
 if __name__ == '__main__':
     urls_dict = {}
-    urls_dict['英文早餐'] = 'https://mp.weixin.qq.com/s/ds-mlmrxl1atuHQYo2ECsQ'
-    urls_dict['美剧绝命律师'] = 'https://mp.weixin.qq.com/s/R3S56Bt66QpBne9VBV89og'
-    urls_dict['英语新闻'] = 'https://mp.weixin.qq.com/s/Sh67Xyiydje9jHad8OF14A'
-    urls_dict['从零开始学英语'] = 'https://mp.weixin.qq.com/s/qJeN0Arhj45rtCuEYjXKOw'
-    date_time = '20230209'
+    urls_dict['英文早餐'] = 'https://mp.weixin.qq.com/s/S-UigcbkzV-zGGCgCJQEbg'
+    urls_dict['美剧绝命律师'] = 'https://mp.weixin.qq.com/s/Bd0QjNUfuHAKwf5B3P1_pw'
+    urls_dict['英语新闻'] = 'https://mp.weixin.qq.com/s/Yq83DCEoFRyHdlLP3bFcyQ'
+    urls_dict['从零开始学英语'] = 'https://mp.weixin.qq.com/s/A_ZH8T9CR1_taYaAI-Zi-g'
+    date_time = '20230210'
     spider = WechatVoiceSpider(urls_dict, date_time)
     spider.run()
