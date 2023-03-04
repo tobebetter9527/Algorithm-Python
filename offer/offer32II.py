@@ -1,6 +1,5 @@
 # author: tobebetter9527
 # since: 2023/3/2 14:51
-import collections
 from typing import List
 
 from offer.TreeNode import TreeNode
