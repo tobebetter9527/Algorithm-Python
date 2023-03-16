@@ -1,4 +1,3 @@
-x = 5;
-y = 6
-z = x + y
-print(z)
+lst= range(1,10)
+
+print(list(lst))
