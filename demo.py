@@ -1,1 +1,3 @@
-print(1 / 6)
+lst= range(1,10)
+
+print(list(lst))
