@@ -1,4 +1,3 @@
-lst= [1]
+lst= range(1,10)
 
-print(lst)
-print( not lst)
+print(list(lst))
